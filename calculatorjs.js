@@ -7,6 +7,7 @@ function buttonDEC() {
 		document.getElementById("antwoord").innerHTML += ".";
 		pushed = true;
 		number += ".";
+		console.log(".")
 	}
 }
 
@@ -40,9 +41,27 @@ function tap(event) {
 		button(9);
 	} else if (taps == 46) {
 		buttonDEC();
+	} else if (taps == 67 || taps == 99) {
+		buttonC();
+	} else if (taps == 43) {
+		buttonADD();
 	}
 }
 
+function buttonC() {
+	pushed = false;
+	numbers = [];
+	number = "";
+	document.getElementById("antwoord").innerHTML = "0";
+	document.getElementById("som").innerHTML = "";
+	console.log("clear");
+}
+
+function buttonADD() {
+	number = Number(number);
+	numbers.push(number);
+	console.log("add");
+}
 
 
 
@@ -53,4 +72,11 @@ function tap(event) {
 var k = "slaap";
 k = k+"muts";
 k += "muts";
+var maarten = "MAARTEN IS GEEN EINDBAAS!"
+function Maarten() {
+	for (i=0; i<1;) {
+		console.log(maarten);
+		maarten += "!"
+	}
+}
 // slaapmutsmuts
