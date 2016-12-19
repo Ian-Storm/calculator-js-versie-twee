@@ -1,6 +1,8 @@
 var pushed = false;
 var numbers = [];
+var operators = [];
 var number = "";
+var ans = 0;
 
 function buttonDEC() {
 	if (pushed == false) {
@@ -45,6 +47,8 @@ function tap(event) {
 		buttonC();
 	} else if (taps == 43) {
 		buttonADD();
+	} else if (taps == 13) {
+		buttonANS();
 	}
 }
 
@@ -61,22 +65,33 @@ function buttonADD() {
 	number = Number(number);
 	numbers.push(number);
 	console.log("add");
+	document.getElementById("som").innerHTML += number + " + ";
+	document.getElementById("antwoord").innerHTML = "0";
+	number = "";
+	pushed = false;
 }
 
+function buttonSUB() {
 
+}
 
+function buttonMULT() {
 
+}
 
+function buttonDIV() {
 
+}
 
-var k = "slaap";
-k = k+"muts";
-k += "muts";
-var maarten = "MAARTEN IS GEEN EINDBAAS!"
-function Maarten() {
-	for (i=0; i<1;) {
-		console.log(maarten);
-		maarten += "!"
+function buttonANS() {
+	number = Number(number);
+	numbers.push(number);
+	console.log("ans");
+	number = "";
+	var i;
+	for (i=0; i<numbers.length; i++) {
+		numbers.splice(i, 2, numbers[i] + numbers[i+1]);	
 	}
+	number = numbers[0];
+	document.getElementById("antwoord").innerHTML = "antwoord is " + number;
 }
-// slaapmutsmuts
