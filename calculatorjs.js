@@ -94,4 +94,4 @@ function buttonANS() {
 	}
 	number = numbers[0];
 	document.getElementById("antwoord").innerHTML = "antwoord is " + number;
-}
+} 
