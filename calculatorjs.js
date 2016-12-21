@@ -69,6 +69,7 @@ function buttonADD() {
 	document.getElementById("antwoord").innerHTML = "0";
 	number = "";
 	pushed = false;
+	operators.push("+");
 }
 
 function buttonSUB() {
@@ -86,11 +87,19 @@ function buttonDIV() {
 function buttonANS() {
 	number = Number(number);
 	numbers.push(number);
+	document.getElementById("som").innerHTML += number;
 	console.log("ans");
 	number = "";
 	var i;
-	for (i=0; i<numbers.length; i++) {
-		numbers.splice(i, 2, numbers[i] + numbers[i+1]);	
+	var l;
+	var loop = operators.length;
+	for (l=0; l<=loop; l++){	
+		for (i=0; i<numbers.length; i++) {
+			if (operators[i] == "+") {
+				numbers.splice(i, 2, numbers[i] + numbers[i+1]);
+				operators.splice(i, 1);
+			}
+		}
 	}
 	number = numbers[0];
 	document.getElementById("antwoord").innerHTML = "antwoord is " + number;
