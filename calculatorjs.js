@@ -61,27 +61,14 @@ function buttonC() {
 	console.log("clear");
 }
 
-function buttonADD() {
+function operator(oper) {
 	number = Number(number);
 	numbers.push(number);
-	console.log("add");
-	document.getElementById("som").innerHTML += number + " + ";
-	document.getElementById("antwoord").innerHTML = "0";
+	numbers.push(oper);
 	number = "";
-	pushed = false;
-	operators.push("+");
-}
-
-function buttonSUB() {
-
-}
-
-function buttonMULT() {
-
-}
-
-function buttonDIV() {
-
+	console.log(numbers);
+	document.getElementById("som").innerHTML = number;
+	document.getElementById("antwoord").innerHTML = numbers;
 }
 
 function buttonANS() {
@@ -104,3 +91,15 @@ function buttonANS() {
 	number = numbers[0];
 	document.getElementById("antwoord").innerHTML = "antwoord is " + number;
 } 
+
+
+/*function buttonADD() {
+	number = Number(number);
+	numbers.push(number);
+	console.log("add");
+	document.getElementById("som").innerHTML += number + " + ";
+	document.getElementById("antwoord").innerHTML = "0";
+	number = "";
+	pushed = false;
+	operators.push("+");
+}*/ 
