@@ -46,7 +46,13 @@ function tap(event) {
 	} else if (taps == 67 || taps == 99) {
 		buttonC();
 	} else if (taps == 43) {
-		buttonADD();
+		operator('+');
+	} else if (taps == 45) {
+		operator('-');
+	} else if (taps == 42 || taps == 88 || taps == 120) {
+		operator('x');
+	} else if (taps == 47  || taps == 58) {
+		operator(':');
 	} else if (taps == 13) {
 		buttonANS();
 	}
@@ -62,13 +68,14 @@ function buttonC() {
 }
 
 function operator(oper) {
+	pushed = false;
 	number = Number(number);
 	numbers.push(number);
-	numbers.push(oper);
+	operators.push(oper);
+	document.getElementById("som").innerHTML += number + " " + oper + " ";
 	number = "";
 	console.log(numbers);
-	document.getElementById("som").innerHTML = number;
-	document.getElementById("antwoord").innerHTML = numbers;
+	document.getElementById("antwoord").innerHTML = "0";
 }
 
 function buttonANS() {
@@ -80,26 +87,28 @@ function buttonANS() {
 	var i;
 	var l;
 	var loop = operators.length;
-	for (l=0; l<=loop; l++){	
+	for (l=0; l<=loop; l++){
+		for (i=0; i<numbers.length; i++) {
+			if (operators[i] == "x") {
+				numbers.splice(i, 2, numbers[i] * numbers[i+1]);
+				operators.splice(i, 1);
+			} 
+			else if (operators[i] == ":") {
+				numbers.splice(i, 2, numbers[i] / numbers[i+1]);
+				operators.splice(i, 1);
+			}
+		}
 		for (i=0; i<numbers.length; i++) {
 			if (operators[i] == "+") {
 				numbers.splice(i, 2, numbers[i] + numbers[i+1]);
+				operators.splice(i, 1);
+			} 
+			else if (operators[i] == "-") {
+				numbers.splice(i, 2, numbers[i] - numbers[i+1]);
 				operators.splice(i, 1);
 			}
 		}
 	}
 	number = numbers[0];
 	document.getElementById("antwoord").innerHTML = "antwoord is " + number;
-} 
-
-
-/*function buttonADD() {
-	number = Number(number);
-	numbers.push(number);
-	console.log("add");
-	document.getElementById("som").innerHTML += number + " + ";
-	document.getElementById("antwoord").innerHTML = "0";
-	number = "";
-	pushed = false;
-	operators.push("+");
-}*/ 
+}
