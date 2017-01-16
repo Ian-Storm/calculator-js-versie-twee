@@ -17,8 +17,13 @@ button {
 	background-color: limegreen;
 	color: red;
 	font-size: 30px;
+	border: 1px solid black;
+	margin-top: 3px;
+	margin-left: -1px;
 }
 
 body {
 	max-width: 415px;
+	background:url(doge.jpg); 
+	background-size: cover; 
 }
